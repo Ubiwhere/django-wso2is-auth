@@ -63,7 +63,7 @@ You are all set!
 As previously mentioned, only the mapping between the username field is done. Let's say you have the following django User model:
 ```python
 class MyUser(AbstractBaseUser):
-  # first_name and last_name exist by default in django.contrib.auth user model
+  # first_name, last_name and email exist by default in django.contrib.auth user model
   # Now we specify new custom fields to save the user's organization and phone number from WSO2 identity server
   user_organization = models.CharField(max_length=255,null=True, blank=True)
   phone_number = models.CharField(max_length=255, null=True, blank=True)
