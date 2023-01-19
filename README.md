@@ -128,7 +128,7 @@ from django_wso2is import Token
 @receiver(user_authenticated)
 def wso2_user_authenticated(sender, user, token: Token, **kwargs):
    # Get user roles
-   roles = [role for role in token.client_roles]
+   roles: list[str] = [role for role in token.client_roles]
    for role in roles:
       group, _ = Group.objects.get_or_create(name=role)
       user.groups.add(group)
