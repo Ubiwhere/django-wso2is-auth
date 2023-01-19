@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "django-wso2is-auth"
+version = "0.0.1"
+authors = [
+  { name="Ubiwhere", email="geral@ubiwhere.com" },
+]
+description = "Django authentication against WSO2 Identity Server"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dynamic = ["dependencies"]
+
+[project.urls]
+"Homepage" = "https://github.com/Ubiwhere/django-wso2is-auth/"
+"Bug Tracker" = "https://github.com/Ubiwhere/django-wso2is-auth/issues"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
