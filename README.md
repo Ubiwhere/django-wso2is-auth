@@ -115,4 +115,24 @@ To accommodate these additional fields the attribute mapping will be:
 },
 ```
 
+### 2. Post authentication signal
+If you want to hook additional behaviour after an user has been authenticated, you can simply attach to the `user_authenticated` signal. For instance, let's say we want to also get/create and associate with the user a `Group` object based on the user WSO2 roles.
+
+```python
+yourapp/signals.py
+from django.contrib.auth.models import Group
+from django.dispatch import receiver
+from django_wso2is.signals import user_authenticated
+from django_wso2is import Token
+
+@receiver(user_authenticated)
+def wso2_user_authenticated(sender, user, token: Token, **kwargs):
+   # Get user roles
+   roles = [role for role in token.client_roles]
+   for role in roles:
+      group, _ = Group.objects.get_or_create(name=role)
+      user.groups.add(group)
+      user.save()
+       
+```
 
