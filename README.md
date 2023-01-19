@@ -72,6 +72,7 @@ class MyUser(AbstractBaseUser):
 ```
 First we can inspect the JSON response from WSO2 to see the user information that is being returned to django. (This assumes you already configured everything else)
 ```python
+# Inside django's shell (python manage.py shell)
 from django_wso2is import Token
 from pprint import pprint
 
